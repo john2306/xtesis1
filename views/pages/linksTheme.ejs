@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="Shortcut Icon" href="images/favicon-16x16.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
+    <style>
+        body {
+            background: #00F260;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #0575E6, #00F260);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #0575E6, #00F260);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+            color: #090A09;
+            margin: 0%;
+            padding: 0%;
+        }
+
+        #logotipo {
+            width: 40px;
+            height: 40px;
+        }
+
+        #enlacesPaginas {
+            color: black;
+            text-decoration: none;
+            background: #fff;
+            margin: 100px;
+        }
+
+        #enlacesPaginas:hover {
+            color: black;
+            text-decoration: none;
+            background: #00F260;
+
+        }
+
+
+        a span {
+            font-size: 20px;
+        }
+
+        p a{
+            background: none;
+        }
+
+        .buscador{
+            margin: 30px;
+        }
+
+        .card{
+            border: 1px solid #090A09;
+        }
+        .card-header{
+            padding: 0%;
+            background: #0575E6;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #00F260, #0575E6);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #00F260, #0575E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+border: 1px solid #090A09;
+        }
+
+        .card-header h3{
+            text-align: center;
+        }
+
+        .descargarArticulo a{
+            color:#fff;
+            background: #090A09;
+        }
+
+        .descargarArticulo a:hover{
+            color:#fff;
+            background: #090A09;
+            border: 1px solid #0575E6;
+        }
+
+    footer a:hover{
+        color: #fff;
+            text-decoration: none;
+            background: #090A09;
+            border-radius: 3px;
+    }
+
+    nav{
+        background-color: #090A09;
+        color: #0575E6;
+    }
+    .navbar{
+        padding-top: 0%;
+        padding-bottom: 0%;
+        padding-left: 80px;
+        font-size: 30px !important;
+        margin-bottom: 0;
+     background-color: rgb(0, 0, 0);
+    z-index: 9999;
+    border: 0;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+    }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!--Barra de navegación-->
+    <nav class="navbar navbar-expand-sm">
+        <!-- Brand/logo -->
+        <a class="navbar-brand" href="/">
+            <img src="images/favicon-96x96.png" alt="logo" style="width:50px;">
+        </a>
+
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Xsearch</a>
+            </li>
+        </ul>
+    </nav>
+
+
+
+    <div class="container-fluid">
+        <div class="text-center m-2">
+            <div class="buscador">
+                <div class="row">
+                    <div class="col-md-1">
+                        <h3>Buscar:</h3>
+                    </div>
+                    <div class="col-md-11">
+                        <form action="mostrarEnlaces" method="GET">
+                            <div class="input-group">
+                                <input autocomplete="off" type="text" class="form-control" placeholder="Palabra buscada: <%= str%>"
+                                    name="busqueda">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-sm-12 text-center">
+
+                <div class="list">
+                        <% if (str.slice(0,4) != 'http') { %>
+                            <% for(var i=0; i<paginaFinal.length; i++) {%>
+                            <a id="enlacesPaginas" class="btn" href="<%= paginaFinal[i] %>" target="_blank" style="color:#090A09; margin:0%; margin-top: 5px;">
+                                <span>
+                                    <%= arrayPages[i] %>
+                                </span> <img id="logotipo" src="images/logos/<%= arrayPages[i]%>.png" alt="<%= arrayPages %>" style="border-radius:5px"></a>
+                            <% } %>
+            
+                            <% } %>
+                </div>
+
+
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>RECURSOS ADICIONALES</h3>
+                        </div>
+                    </div>
+                    <br>
+                    <strong>Descargar artículos Gratis</strong>
+                    <img src="images/logos/Scihub.png" alt="SCI-HUB" style=" width: 40px; height: 40px;margin-bottom:1px;">
+                    <form action="mostrarEnlaces" method="GET">
+                        <div class="input-group">
+                            <input autocomplete="off" type="text" class="form-control" placeholder="Ingresar el link del artículo"
+                                name="busqueda">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <% if (str.slice(0,4) === 'http') { %>
+                    <div class="descargarArticulo">
+                        <a class="btn btn-primary " href="https://sci-hub.tw/<%= str%>" target="_blank">DESCARGAR
+                            ARTÍCULO</a>
+                    </div>
+                    <% } %>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <!--Pie de página-->
+    <div item-height="200">
+
+    </div>
+    <div class="container">
+        <footer>
+            <p>License: MIT, John Mendoza - <a href="https://john2306.github.io/John-Mendoza/#" target="_blank">Web
+                    Personal</a></p>
+        </footer>
+    </div>
+
+
+
+    <!--Javascript-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".list a").click(function () {
+                $(this).hide();
+            });
+        });
+    </script>
+</body>
+
+</html>
